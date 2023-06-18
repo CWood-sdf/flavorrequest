@@ -1,0 +1,5 @@
+{
+	"vim.startInInsertMode": true,
+	"vim.useCtrlKeys": false,
+	"svn.ignoreMissingSvnWarning": true
+}

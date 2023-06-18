@@ -1,0 +1,28 @@
+{
+	"version": "2.0.0",
+	"tasks": [
+		{
+			"label": "Run format",
+			"command": "npm",
+			"args": ["run", "format"]
+		},
+		{
+			"label": "Run",
+			"command": "npm",
+			"args": ["run", "dev", "--", "--open"],
+			"type": "shell",
+			"isBackground": true,
+			"problemMatcher": {
+				"pattern": {
+					"regexp": "^[^L]*Local"
+				}
+			}
+		},
+		{
+			"label": "My Task",
+			"type": "shell",
+			"command": "echo Hello",
+			"problemMatcher": []
+		}
+	]
+}
