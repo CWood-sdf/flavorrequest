@@ -1,9 +1,10 @@
 
-import { firestore } from "$lib/firebase/server";
+import { assertAdmin, firestore } from "$lib/firebase/server";
 import { error, redirect } from "@sveltejs/kit";
 
 /** @type {import('./$types').PageServerLoad} */
-export async function load() {
+export async function load({ cookies }) {
+    assertAdmin(cookies);
     const cool = await firestore.collection("flavors").get();
     const snap = cool.docs.map((doc) => doc.data());
     // const snap = await db.ref("test").get();

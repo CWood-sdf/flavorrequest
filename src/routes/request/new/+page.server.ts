@@ -1,9 +1,9 @@
-import { auth, firestore } from "$lib/firebase/server";
+import { auth, firestore, getEmail } from "$lib/firebase/server";
 import { error, redirect } from "@sveltejs/kit";
+import type { PageServerLoad } from './$types';
 import type { LayoutServerLoadEvent } from "../../$types.js";
 
-/** @type {import('./$types').PageServerLoad} */
-export async function load({ cookies }: LayoutServerLoadEvent) {
+export const load = async function ({ cookies }: LayoutServerLoadEvent) {
     const cool = await firestore.collection("flavors").get();
     const snap = cool.docs.map((doc) => doc.data());
     // const snap = await db.ref("test").get();
@@ -26,26 +26,21 @@ export async function load({ cookies }: LayoutServerLoadEvent) {
             data: snap
         }
     }
-};
+} satisfies PageServerLoad;
 
 /** @type {import('./$types').Actions} */
 export const actions = {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     default: async ({ request, cookies }) => {
-        const token = cookies.get("token");
-        const user = token ? await auth.verifyIdToken(token) : null;
-        console.log(user?.email);
         const data = await request.formData();
         const useEmail = data.get('use-email') ?? false;
-        console.log(data.get("flavor"));
-        // console.log((await request.json());
-        console.log(data.get('use-email') ?? false);
+
         let flavor: string = data.get("flavor")?.toString() ?? "";
         flavor = flavor.replace(/\(.*/g, "").trim();
         const date = new Date();
         const mmddyyyy = `${date.getMonth() + 1}/${date.getDate()}/${date.getFullYear()}`;
         // im fairly sure that "$?" will never be a valid email address
-        const email = useEmail ? data.get("email") : "$?";
+        const email = useEmail ? await getEmail(cookies) : "$?";
         // check if request already exists
         const exists = await firestore.collection("requests").where("flavor", "==", flavor).where("email", "==", email).get();
         console.log(exists.empty);
@@ -56,7 +51,7 @@ export const actions = {
         }
         await firestore.collection("requests").add({
             flavor: flavor,
-            email: useEmail ? data.get("email") : "",
+            email: useEmail ? email : "",
             date: mmddyyyy
         });
         throw redirect(303, '/request/new');
