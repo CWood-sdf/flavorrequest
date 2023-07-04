@@ -15,7 +15,7 @@ export const load = (async ({ cookies }) => {
 }) satisfies PageServerLoad;
 
 export const actions = {
-    default: async ({ request, cookies }) => {
+    send: async ({ request, cookies }) => {
         if (!await isAdmin(await getEmail(cookies))) {
             throw error(404, "Not found");
         }

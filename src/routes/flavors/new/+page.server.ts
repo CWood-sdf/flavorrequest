@@ -4,7 +4,6 @@ import { isAdmin, getEmail, firestore } from '$lib/firebase/server';
 
 export const load = (async ({ cookies }) => {
     console.log(await getEmail(cookies));
-    console.log("sdfsdf");
     if (!await isAdmin(await getEmail(cookies))) {
         throw error(404, "Not found");
     }
@@ -15,7 +14,7 @@ export const load = (async ({ cookies }) => {
 }) satisfies PageServerLoad;
 
 export const actions = {
-    default: async ({ request, cookies }) => {
+    send: async ({ request, cookies }) => {
         if (!await isAdmin(await getEmail(cookies))) {
             throw error(404, "Not found");
         }

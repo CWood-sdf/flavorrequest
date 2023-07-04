@@ -1,15 +1,8 @@
 <script lang="ts">
+	import Delete from '$lib/components/Delete.svelte';
 	import type { PageData } from './$types';
 
 	export let data: PageData;
 </script>
 
-<h1 class="text-2xl font-bold my-2">Delete Admin</h1>
-
-<p>Are you sure you want to delete the admin {data.data.email}?</p>
-
-<form method="post">
-	<input type="hidden" name="_method" value="DELETE" />
-	<button type="submit" class="bg-red-700 p-2 my-4 rounded-md">Delete</button>
-	<a href="/admins" class="bg-blue-700 p-2 my-2 rounded-md">Cancel</a>
-</form>
+<Delete title="Admin" name={data.data.email} route="admins" />

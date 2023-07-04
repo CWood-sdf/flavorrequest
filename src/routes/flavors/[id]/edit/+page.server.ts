@@ -24,7 +24,7 @@ export const load = (async ({ params, cookies }) => {
 }) satisfies PageServerLoad;
 
 export const actions = {
-    default: async ({ params, request, cookies }) => {
+    send: async ({ params, request, cookies }) => {
         assertAdmin(cookies);
         const body = await request.formData();
         const name = body.get("name");
