@@ -12,7 +12,6 @@ export async function load({ cookies, url }: LayoutServerLoadEvent) {
     try {
         const token = cookies.get("token");
         const user = token ? await auth.verifyIdToken(token) : null;
-        console.log(user?.email);
         if (!user) {
             //throw redirect(307, "/loginWithGoogle");
         }

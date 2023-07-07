@@ -8,7 +8,10 @@ export interface PageServerLoad {
     };
     pageId: string;
 }
-
+export interface DeleteParams {
+    params: { id: string };
+    cookies: Cookies;
+}
 export async function deleteLoad(params: { id: string }, cookies: Cookies, collection: string, properties: string[]): Promise<PageServerLoad> {
     await assertAdmin(cookies);
     const cool = await firestore.collection(collection).where("id", "==", parseInt(params.id)).get();

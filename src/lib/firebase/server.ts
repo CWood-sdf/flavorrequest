@@ -36,7 +36,6 @@ export async function isAdmin(userEmail: string): Promise<boolean> {
     // return true if it is, false if it isn't
     const admins = await firestore.collection("admins").get();
     for (const doc of admins.docs) {
-        console.log(doc.get("email"));
         if (doc.get("email") === userEmail) {
             return true;
         }
