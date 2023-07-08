@@ -1,8 +1,8 @@
 import type { Cookies } from "@sveltejs/kit";
-import { deleteLoad, type PageServerLoad } from "./delete";
+import { deleteLoad, type PageServerLoad } from "$lib/controllers/delete";
 import { assertAdmin, firestore } from "$lib/firebase/server";
 
-interface Element {
+export interface Element {
     [key: string]: string;
 };
 
