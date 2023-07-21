@@ -19,7 +19,6 @@ export async function editLoad(
     properties: string[]
 ): Promise<PageServerLoad> {
     return await deleteLoad(params, cookies, collection, properties);
-    let x: number = 0;
 }
 
 export async function editElement(

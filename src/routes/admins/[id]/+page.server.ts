@@ -1,5 +1,3 @@
-import { assertAdmin, firestore } from '$lib/firebase/server';
-import { error } from '@sveltejs/kit';
 import type { PageServerLoad } from './$types';
 import { deleteLoad } from '$lib/controllers/delete';
 
@@ -13,5 +11,3 @@ export const load = (async ({ params, cookies }) => {
 
     return snap;
 }) satisfies PageServerLoad;
-
-
