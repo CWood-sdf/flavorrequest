@@ -39,4 +39,6 @@
 	</tbody>
 </table>
 
-<div class="text-sm">Data may take a few seconds to refresh so you may need to reload the page</div>
+<div class="text-sm">
+	Data may take a few seconds to refresh so you may need to reload the page
+</div>

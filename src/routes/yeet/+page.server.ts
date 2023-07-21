@@ -1,6 +1,6 @@
 // import { error } from '@sveltejs/kit';
 // import { exec } from "child_process";
-import { execSqlite } from "$lib/sqlite";
+import { execSqlite } from '$lib/sqlite';
 
 /** @type {import('./$types').PageServerLoad} */
 export async function load() {

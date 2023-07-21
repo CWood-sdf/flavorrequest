@@ -21,19 +21,25 @@
 	});
 </script>
 
-<main class="bg-white dark:bg-gray-900 h-screen w-screen text-slate-950 dark:text-white px-4">
+<main
+	class="bg-white dark:bg-gray-900 h-screen w-screen text-slate-950 dark:text-white px-4"
+>
 	<header class="py-5">
 		{#if !$authDone}
 			<p>Loading...</p>
 		{:else if $user}
 			<span class="px-2">Logged in as {$user.displayName}</span>
-			<button on:click={() => signOut()} class="bg-gray-200 dark:bg-blue-400 px-2 py-1 rounded-md">
+			<button
+				on:click={() => signOut()}
+				class="bg-gray-200 dark:bg-blue-400 px-2 py-1 rounded-md"
+			>
 				Log out
 			</button>
 		{:else}
 			Not logged in.
-			<button on:click={() => signIn()} class="bg-gray-200 dark:bg-blue-400 px-3 py-2 rounded-md"
-				>Login</button
+			<button
+				on:click={() => signIn()}
+				class="bg-gray-200 dark:bg-blue-400 px-3 py-2 rounded-md">Login</button
 			>
 		{/if}
 	</header>

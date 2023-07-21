@@ -33,7 +33,9 @@
 		<label for="flavor">Select a flavor</label>
 		<select name="flavor" class="bg-white dark:bg-gray-900 p-1">
 			{#each dropdownItems as item}
-				<option class="bg-white dark:bg-gray-900" value={item.name}>{item.text}</option>
+				<option class="bg-white dark:bg-gray-900" value={item.name}
+					>{item.text}</option
+				>
 			{/each}
 		</select>
 	</div>

@@ -1,29 +1,28 @@
 import type { PlaywrightTestConfig } from '@playwright/test';
 import { devices } from '@playwright/test';
 
-
 const config: PlaywrightTestConfig = {
 	projects: [
 		// { name: 'setup', testMatch: /auth.setup.ts/ },
 		{
 			name: 'chromium',
 			use: {
-				...devices['Desktop Chrome'],
+				...devices['Desktop Chrome']
 				// Use prepared auth state.
 				// storageState: 'playwright/.auth/user.json',
 			},
-			dependencies: [],
+			dependencies: []
 		},
 
 		{
 			name: 'firefox',
 			use: {
-				...devices['Desktop Firefox'],
+				...devices['Desktop Firefox']
 				// Use prepared auth state.
 				// storageState: 'playwright/.auth/user.json',
 			},
-			dependencies: [],
-		},
+			dependencies: []
+		}
 	],
 	webServer: {
 		command: 'npm run build && npm run preview',

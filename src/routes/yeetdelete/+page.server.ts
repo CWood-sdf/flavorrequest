@@ -25,7 +25,9 @@ export const actions = {
 		if (rowsToDelete.length === 0) {
 			throw redirect(303, '/yeet');
 		}
-		await execSqlite(`delete from test where id in (${rowsToDelete.join(', ')})`);
+		await execSqlite(
+			`delete from test where id in (${rowsToDelete.join(', ')})`
+		);
 		throw redirect(303, '/yeet');
 	}
 };

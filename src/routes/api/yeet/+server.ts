@@ -4,7 +4,9 @@ import { error } from '@sveltejs/kit';
 export async function GET({ url, request }) {
 	const requestJson = await request.blob();
 	console.log(requestJson);
-	const auth_email: string | null = await request.headers.get('Ngrok-Auth-User-Email');
+	const auth_email: string | null = await request.headers.get(
+		'Ngrok-Auth-User-Email'
+	);
 	console.log(auth_email);
 	// if (auth_email == null) {
 	//     throw error(404, 'Not found');
@@ -15,7 +17,10 @@ export async function GET({ url, request }) {
 	const d = max - min;
 
 	if (isNaN(d) || d < 0) {
-		throw error(400, 'min and max must be numbers, and min must be less than max');
+		throw error(
+			400,
+			'min and max must be numbers, and min must be less than max'
+		);
 	}
 
 	const random = min + Math.random() * d;

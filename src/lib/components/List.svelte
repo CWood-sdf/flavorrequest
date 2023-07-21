@@ -29,10 +29,15 @@
 					</td>
 				{/each}
 				<td class=" px-3 py-2 border border-slate-700">
-					<a href="{route}/{item.id}/edit" class="underline text-blue-400">Edit</a> |
+					<a href="{route}/{item.id}/edit" class="underline text-blue-400"
+						>Edit</a
+					>
+					|
 					<a href="{route}/{item.id}" class="underline text-blue-400">View</a>
 					|
-					<a href="{route}/{item.id}/delete" class="underline text-blue-400">Delete</a>
+					<a href="{route}/{item.id}/delete" class="underline text-blue-400"
+						>Delete</a
+					>
 				</td>
 			</tr>
 		{/each}

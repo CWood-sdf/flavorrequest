@@ -9,7 +9,9 @@
 	<h1 class="text-2xl pb-3">Request failed</h1>
 	{#if $page.status === 400 && message === 'Exists already'}
 		<div>
-			It looks like you already have a request for the same flavor submitted on {extraData?.at(0)}
+			It looks like you already have a request for the same flavor submitted on {extraData?.at(
+				0
+			)}
 		</div>
 	{:else}
 		<div>Something went wrong. Please try again later.</div>
